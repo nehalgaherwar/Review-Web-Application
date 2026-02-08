@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Review Web App</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div>
+        <h1>⭐ Review Web App</h1>
+        <p class="muted">Add, search, filter, and save reviews (localStorage).</p>
+      </div>
+      <button id="clearAllBtn" class="btn btn-danger" title="Delete all reviews">Clear All</button>
+    </header>
+
+    <main class="grid">
+      <!-- Form -->
+      <section class="card">
+        <h2>Add a Review</h2>
+
+        <form id="reviewForm" autocomplete="off">
+          <div class="row">
+            <div class="field">
+              <label for="name">Your Name</label>
+              <input id="name" type="text" placeholder="e.g., Jitendra" maxlength="40" required />
+            </div>
+            <div class="field">
+              <label>Rating</label>
+              <div class="stars" id="starPicker" aria-label="Star rating picker">
+                <!-- stars injected by JS -->
+              </div>
+              <input id="rating" type="hidden" value="0" required />
+              <small class="muted" id="ratingHint">Select a rating</small>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="title">Title</label>
+            <input id="title" type="text" placeholder="e.g., Very helpful" maxlength="60" required />
+          </div>
+
+          <div class="field">
+            <label for="message">Review</label>
+            <textarea id="message" rows="4" placeholder="Write your experience..." maxlength="300" required></textarea>
+            <div class="counter"><span id="count">0</span>/300</div>
+          </div>
+
+          <button class="btn btn-primary" type="submit">Publish Review</button>
+          <p class="muted tiny">Tip: Reviews are saved in your browser (localStorage).</p>
+        </form>
+      </section>
+
+      <!-- List / Controls -->
+      <section class="card">
+        <div class="listHeader">
+          <div>
+            <h2>All Reviews</h2>
+            <p class="muted" id="summary">0 reviews</p>
+          </div>
+          <div class="avgBox" title="Average rating">
+            <div class="avgNum" id="avgNum">0.0</div>
+            <div class="avgStars" id="avgStars">★★★★★</div>
+          </div>
+        </div>
+
+        <div class="controls">
+          <div class="field">
+            <label for="search">Search</label>
+            <input id="search" type="text" placeholder="Search by name/title/message..." />
+          </div>
+
+          <div class="row">
+            <div class="field">
+              <label for="filter">Filter</label>
+              <select id="filter">
+                <option value="all">All Ratings</option>
+                <option value="5">5 Stars</option>
+                <option value="4">4 Stars</option>
+                <option value="3">3 Stars</option>
+                <option value="2">2 Stars</option>
+                <option value="1">1 Star</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="sort">Sort</label>
+              <select id="sort">
+                <option value="newest">Newest</option>
+                <option value="oldest">Oldest</option>
+                <option value="highest">Highest Rating</option>
+                <option value="lowest">Lowest Rating</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div id="list" class="list"></div>
+
+        <div id="empty" class="empty hidden">
+          <h3>No reviews found</h3>
+          <p class="muted">Try changing search/filter or add a new review.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer muted tiny">
+      Built with HTML, CSS, and JavaScript — by Jarvis.
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
